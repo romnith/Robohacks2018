@@ -5,6 +5,10 @@ import sys
 
 center = (320, 240)
 
+# Define an initial bounding box
+bbox = (287, 23, 86, 320)
+boxcenter = (0, 0)
+
 if __name__ == '__main__' :
  
     # Set up tracker.
@@ -42,9 +46,6 @@ if __name__ == '__main__' :
     if not ok:
         print('Cannot read video file')
         sys.exit()
-     
-    # Define an initial bounding box
-    bbox = (287, 23, 86, 320)
  
     # Uncomment the line below to select a different bounding box
     #bbox = cv2.selectROI(frame, False)
@@ -73,16 +74,23 @@ if __name__ == '__main__' :
             p1 = (int(bbox[0]), int(bbox[1]))
             p2 = (int(bbox[0] + bbox[2]), int(bbox[1] + bbox[3]))
             cv2.rectangle(frame, p1, p2, (255,0,0), 2, 1)
+            boxcenter = (int((p1[0] + p2[0])/2), int((p1[1] + p2[1])/2))
         else :
             # Tracking failure
             cv2.putText(frame, "Tracking failure detected", (100, 500), cv2.FONT_HERSHEY_SIMPLEX, 0.75,(255,255,255),2)
- 
-        # Display tracker type on frame
-        cv2.putText(frame, tracker_type + " Tracker", (100,80), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50,170,50),2)
 		
 		#display center crosshair
         cv2.putText(frame, ".", center, cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255,255,255),2)
+        
+        x =	int(boxcenter[0]-center[0])
+        y = - int(boxcenter[1]-center[1])
 		
+		#display x and y values
+        cv2.putText(frame, "X/Y:" + str(x) + "/" + str(y), (0, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255,255,255),2)
+		
+		
+        #display box center
+        cv2.putText(frame, ".", boxcenter, cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255,255,255),2)		
      
         # Display FPS on frame
         #cv2.putText(frame, "FPS : " + str(int(fps)), (100,50), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50,170,50), 2);
