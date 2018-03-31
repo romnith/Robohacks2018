@@ -11,7 +11,7 @@
 SoftwareSerial mySerial(0, 1); // RX, TX
 int ind1, ind2;
 int mode = 0;
-int last input;
+int lastInput = 0;
 void setup()
 {
  pinMode(0, INPUT); //RX
@@ -42,12 +42,30 @@ void loop(){
    if (data > -10 && data < 10){
     output = IncomingString.substring(11, 15);
     Serial.println("DATA : " + output);
-    
+    lastInput = output.toInt();
    }
  }
+
+
+//MANUAL MODE1
+
+  switch (lastInput) {
+    case -1:
+      forward();
+      break;
+    case 1:
+      backward();
+      break;
+    default:
+      stop();
+  }
+ 
  if (Serial.available()){
     //SendCommand(Serial.readString(), "ok");
  }
+
+
+
  
  delay(10);
 }
@@ -75,3 +93,18 @@ boolean echoFind(String keyword){
   }
  return false; // Timed out
 }
+
+void forward (){
+  digitalWrite(12, HIGH);
+  digitalWrite(13, LOW);
+}
+void backward (){
+  digitalWrite(13, HIGH);
+  digitalWrite(12, LOW);
+}
+void stop(){
+  digitalWrite(13, LOW);
+  digitalWrite(12, LOW);
+}
+
+
