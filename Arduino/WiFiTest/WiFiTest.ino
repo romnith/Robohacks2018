@@ -5,13 +5,19 @@
 
 #define TIMEOUT 5000 // mS
 #define LED 5
+
+
+
 SoftwareSerial mySerial(0, 1); // RX, TX
 int ind1, ind2;
- 
+int mode = 0;
+int last input;
 void setup()
 {
- pinMode(0, INPUT);
- pinMode(1, OUTPUT);
+ pinMode(0, INPUT); //RX
+ pinMode(1, OUTPUT); //TX
+ pinMode(12 , OUTPUT); //Mot1
+ pinMode(13, OUTPUT); //Mot2
  
  Serial.begin(9600);
  mySerial.begin(115200);
@@ -38,24 +44,9 @@ void loop(){
     Serial.println("DATA : " + output);
     
    }
-    /*
-      for (int i = 0; i<IncomingString.length(); i++){
-        if (IncomingString.charAt(i) == ':' && ind1 == -1){
-          ind1 = i;
-        }
-        else if(IncomingString.charAt(i) == ':' && ind2 == -1){
-          ind2 = i;
-        }
-      }
-      
-      if(ind1 != -1 && ind2!=-1){
-       Serial.println("DATA : " + IncomingString.substring(ind1, ind2));
-      }
-     }
-     */
  }
  if (Serial.available()){
-    SendCommand(Serial.readString(), "ok");
+    //SendCommand(Serial.readString(), "ok");
  }
  
  delay(10);

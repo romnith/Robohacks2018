@@ -1,6 +1,10 @@
 {
     "logs": [
         {
+            "outputFile": "C:\\Users\\Clem\\Desktop\\Robohacks2018\\Android\\WiFiTest\\openCVLibrary341\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+            "map": []
+        },
+        {
             "outputFile": "D:\\Development Projects\\Hackathons\\Robohacks 2018\\Robohacks2018\\Android\\WiFiTest\\openCVLibrary341\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
             "map": []
         }

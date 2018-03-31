@@ -34,7 +34,7 @@ if __name__ == '__main__' :
             tracker = cv2.TrackerGOTURN_create()
  
     # Read video
-    video = cv2.VideoCapture(0)
+    video = cv2.VideoCapture("http://172.20.80.191:8080")
  
     # Exit if video not opened.
     if not video.isOpened():
