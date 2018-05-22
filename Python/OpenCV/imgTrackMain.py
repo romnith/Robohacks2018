@@ -1,6 +1,15 @@
 import cv2
 import sys
+import socket
+import time
+from threading import Thread
  
+TCP_IP = '172.20.80.181'
+TCP_PORT = 80
+#TCP_IP = '172.20.80.27'
+#TCP_PORT = 58727
+BUFFER_SIZE = 1024
+
 (major_ver, minor_ver, subminor_ver) = (cv2.__version__).split('.')
 
 center = (320, 240)
@@ -9,8 +18,29 @@ center = (320, 240)
 bbox = (287, 23, 86, 320)
 boxcenter = (0, 0)
 
+def MyThread(x):
+    #s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #s.connect((TCP_IP, TCP_PORT))
+
+    while True:
+        if x > 30:
+            MESSAGE = "1"
+
+        elif x < -30:
+            MESSAGE = "2"
+
+        else:
+            MESSAGE = "3"
+
+        time.sleep(3)
+
 if __name__ == '__main__' :
+
+    x = 0
  
+    #thread = Thread(target = threaded_function, args = (10, ))
+    #thread.start()
+
     # Set up tracker.
     # Instead of MIL, you can also use
  
@@ -35,7 +65,8 @@ if __name__ == '__main__' :
  
     # Read video
     video = cv2.VideoCapture("http://172.20.80.191:8080")
- 
+    #video = cv2.VideoCapture(0)
+
     # Exit if video not opened.
     if not video.isOpened():
         print('Could not open video')
@@ -52,7 +83,7 @@ if __name__ == '__main__' :
  
     # Initialize tracker with first frame and bounding box
     ok = tracker.init(frame, bbox)
- 
+
     while True:
         # Read a new frame
         ok, frame = video.read()
@@ -88,7 +119,7 @@ if __name__ == '__main__' :
 		#display x and y values
         cv2.putText(frame, "X/Y:" + str(x) + "/" + str(y), (0, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255,255,255),2)
 		
-		
+
         #display box center
         cv2.putText(frame, ".", boxcenter, cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255,255,255),2)		
      
@@ -97,6 +128,7 @@ if __name__ == '__main__' :
 		
         # Display result
         cv2.imshow("Tracking", frame)
+
  
         # Exit if ESC pressed
         k = cv2.waitKey(1) & 0xff

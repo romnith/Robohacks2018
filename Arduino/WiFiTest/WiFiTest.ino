@@ -6,7 +6,8 @@
 #define TIMEOUT 5000 // mS
 #define LED 5
 
-
+String IncomingString="";
+String output = "";
 
 SoftwareSerial mySerial(0, 1); // RX, TX
 int ind1, ind2;
@@ -31,10 +32,10 @@ void setup()
 }
  
 void loop(){
- String IncomingString="";
- String output = "";
+
  int data;
  ind1 = ind2 = -1;
+ timeLapse(5);
  //StringReady= true;
  if (mySerial.available()){
    IncomingString=mySerial.readString();
@@ -57,7 +58,7 @@ void loop(){
       backward();
       break;
     default:
-      stop();
+      stopMotor();
   }
  
  if (Serial.available()){
@@ -94,6 +95,20 @@ boolean echoFind(String keyword){
  return false; // Timed out
 }
 
+void timeLapse(int interval){ // Interval in sec
+  unsigned long tempTime = millis();
+  while(IncomingString != "AAA"){    
+    while(millis() - tempTime < interval * 1000){
+      delay(500);
+    }
+    forward();
+    delay(1000);
+    stopMotor();
+    tempTime = millis();
+  }   
+  stopMotor();
+}
+
 void forward (){
   digitalWrite(12, HIGH);
   digitalWrite(13, LOW);
@@ -102,7 +117,7 @@ void backward (){
   digitalWrite(13, HIGH);
   digitalWrite(12, LOW);
 }
-void stop(){
+void stopMotor(){
   digitalWrite(13, LOW);
   digitalWrite(12, LOW);
 }

@@ -3,11 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/WiFiTest.iml" filepath="$PROJECT_DIR$/WiFiTest.iml" />
-      <module fileurl="file://C:\Users\Clem\Desktop\Robohacks2018\Android\WiFiTest\WiFiTest.iml" filepath="C:\Users\Clem\Desktop\Robohacks2018\Android\WiFiTest\WiFiTest.iml" />
+      <module fileurl="file://C:/Users/Clem/Desktop/Robohacks2018/Android/WiFiTest/WiFiTest.iml" filepath="C:/Users/Clem/Desktop/Robohacks2018/Android/WiFiTest/WiFiTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Clem\Desktop\Robohacks2018\Android\WiFiTest\app\app.iml" filepath="C:\Users\Clem\Desktop\Robohacks2018\Android\WiFiTest\app\app.iml" />
+      <module fileurl="file://C:/Users/Clem/Desktop/Robohacks2018/Android/WiFiTest/app/app.iml" filepath="C:/Users/Clem/Desktop/Robohacks2018/Android/WiFiTest/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/openCVLibrary341/openCVLibrary341.iml" filepath="$PROJECT_DIR$/openCVLibrary341/openCVLibrary341.iml" />
-      <module fileurl="file://C:\Users\Clem\Desktop\Robohacks2018\Android\WiFiTest\openCVLibrary341\openCVLibrary341.iml" filepath="C:\Users\Clem\Desktop\Robohacks2018\Android\WiFiTest\openCVLibrary341\openCVLibrary341.iml" />
+      <module fileurl="file://C:/Users/Clem/Desktop/Robohacks2018/Android/WiFiTest/openCVLibrary341/openCVLibrary341.iml" filepath="C:/Users/Clem/Desktop/Robohacks2018/Android/WiFiTest/openCVLibrary341/openCVLibrary341.iml" />
     </modules>
   </component>
 </project>
